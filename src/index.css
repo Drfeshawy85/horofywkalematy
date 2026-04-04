@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Madani+Arabic:wght@400;700&display=swap');
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Madani Arabic", "Cairo", sans-serif;
+}
+
+body {
+  direction: rtl;
+  @apply bg-sky-50 text-slate-900 overflow-x-hidden;
+}
+
+.arabic-text {
+  font-family: var(--font-arabic);
+}
