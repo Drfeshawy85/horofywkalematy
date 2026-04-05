@@ -17,9 +17,9 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { cn } from './lib/utils';
-import { STAGE1_LEVELS, STAGE2_LEVELS, STAGE2B_LEVELS, STAGE3_LEVELS, Level } from './data';
+import { STAGE1_LEVELS, STAGE1B_LEVELS, STAGE2_LEVELS, STAGE2B_LEVELS, STAGE3_LEVELS, Level } from './data';
 
-type Stage = 'login' | 'home' | 'stage1' | 'stage2' | 'stage2b' | 'stage3';
+type Stage = 'login' | 'home' | 'stage1' | 'stage1b' | 'stage2' | 'stage2b' | 'stage3';
 
 const SOUNDS = {
   correct: 'https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-reward-952.mp3',
@@ -100,6 +100,7 @@ export default function App() {
   const [completedWords, setCompletedWords] = useState<string[]>([]);
 
   const levels = stage === 'stage1' ? STAGE1_LEVELS : 
+                 stage === 'stage1b' ? STAGE1B_LEVELS :
                  stage === 'stage2' ? STAGE2_LEVELS : 
                  stage === 'stage2b' ? STAGE2B_LEVELS : STAGE3_LEVELS;
   const currentLevel = levels[currentLevelIdx];
@@ -278,9 +279,24 @@ export default function App() {
             className="max-w-md w-full bg-white rounded-[3rem] shadow-2xl p-10 border-8 border-blue-100 text-center space-y-8"
           >
             <div className="space-y-4">
-              <div className="w-24 h-24 bg-blue-500 rounded-3xl mx-auto flex items-center justify-center shadow-lg rotate-3">
-                <BookOpen className="w-12 h-12 text-white" />
-              </div>
+              <motion.div 
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
+                transition={{ type: 'spring', bounce: 0.5 }}
+                className="relative w-48 h-48 mx-auto mb-6"
+              >
+                <div className="absolute inset-0 bg-blue-100 rounded-[3rem] rotate-6 scale-105 opacity-50" />
+                <div className="absolute inset-0 bg-orange-100 rounded-[3rem] -rotate-3 scale-105 opacity-50" />
+                <img 
+                  src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=400&h=400" 
+                  alt="Alphabet Letters" 
+                  referrerPolicy="no-referrer"
+                  className="relative w-full h-full object-cover rounded-[2.5rem] border-4 border-white shadow-xl"
+                />
+                <div className="absolute -bottom-4 -right-4 bg-yellow-400 p-3 rounded-2xl shadow-lg border-4 border-white rotate-12">
+                  <BookOpen className="w-8 h-8 text-white" />
+                </div>
+              </motion.div>
               <h1 className="text-4xl font-black text-blue-600 arabic-text">تسجيل الدخول</h1>
               <p className="text-slate-500 font-bold">مرحباً بك في حروفي وكلماتي</p>
             </div>
@@ -347,13 +363,20 @@ export default function App() {
               <p className="text-xl text-slate-500 font-medium">رحلة ممتعة في عالم اللغة العربية!</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <StageCard 
                 title="المرحلة الأولى"
                 desc="تركيب الحروف إلى كلمات"
                 icon={<Type className="w-10 h-10" />}
                 color="bg-orange-500"
                 onClick={() => { setStage('stage1'); setCurrentLevelIdx(0); }}
+              />
+              <StageCard 
+                title="المرحلة الأولى (ب)"
+                desc="تكوين الكلمات الطويلة"
+                icon={<Layers className="w-10 h-10" />}
+                color="bg-rose-500"
+                onClick={() => { setStage('stage1b'); setCurrentLevelIdx(0); }}
               />
               <StageCard 
                 title="المرحلة الثانية"
