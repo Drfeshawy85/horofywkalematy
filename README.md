@@ -1,20 +1,23 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# حروفي وكلماتي (My Letters and My Words)
 
-# Run and deploy your AI Studio app
+تطبيق تعليمي تفاعلي للأطفال لتعلم اللغة العربية بطريقة ممتعة ومشوقة.
 
-This contains everything you need to run your app locally.
+## المميزات
+- **مراحل تعليمية متدرجة:** من تركيب الحروف إلى تكوين الجمل.
+- **طريق الكنز:** نظام تحفيزي يشجع الطفل على التقدم.
+- **مؤثرات صوتية:** تعزيز سمعي للإجابات الصحيحة والخاطئة.
+- **شاشة دخول:** تخصيص التجربة باسم الطفل.
+- **تصميم جذاب:** واجهة مستخدم ملونة وسهلة الاستخدام للأطفال.
 
-View your app in AI Studio: https://ai.studio/apps/27af818d-9830-4e32-a491-44931b85dd3a
+## كيفية التشغيل (محلياً)
+1. قم بتثبيت التبعيات: `npm install`
+2. ابدأ خادم التطوير: `npm run dev`
+3. افتح المتصفح على `http://localhost:3000`
 
-## Run Locally
+## النشر (Deployment)
+للحصول على تفاصيل حول كيفية نشر التطبيق على **Google Cloud Run** أو **GitHub/Vercel**، يرجى مراجعة الملف:
+`docs/DEPLOYMENT.md`
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## الحقوق
+جميع الحقوق محفوظة © 2026
+تنفيذ: دكتور محمود الفيشاوي / اختصاصي النطق واللغة
